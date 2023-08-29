@@ -1,8 +1,6 @@
-import android.health.connect.datatypes.units.Percentage
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -15,10 +13,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowCircleRight
-import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -30,7 +26,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PaintingStyle.Companion.Stroke
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -38,57 +33,68 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
+import earn.skill.currency.navigation.Screens
 
 @Composable
 fun HomeScreen(navController: NavHostController) {
 
-    Column(modifier = Modifier.fillMaxSize()) {
+    Box(modifier = Modifier.fillMaxSize()) {
+        Column(modifier = Modifier.fillMaxSize()) {
 
-        Row {
+            Row {
 
 
-            val compnotify by rememberLottieComposition(
-                spec = LottieCompositionSpec.Asset("blockchain2.json")
-            )
-            val progress by animateLottieCompositionAsState(compnotify)
-            LottieAnimation(
-                composition = compnotify,
-                iterations = Int.MAX_VALUE,
-                isPlaying = true,
-                contentScale = ContentScale.Crop,
-                speed = 1.45f,
+                val compnotify by rememberLottieComposition(
+                    spec = LottieCompositionSpec.Asset("blockchain2.json")
+                )
+                val progress by animateLottieCompositionAsState(compnotify)
+                LottieAnimation(
+                    composition = compnotify,
+                    iterations = Int.MAX_VALUE,
+                    isPlaying = true,
+                    contentScale = ContentScale.Crop,
+                    speed = 1.45f,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .size(45.dp)
+                        .padding(top = 180.dp)
+                )
+            }
+
+            Spacer(modifier = Modifier.height(80.dp))
+            Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .size(45.dp)
-                    .padding(top = 180.dp)
+                    .padding(top = 300.dp)
+            ) {
+                TextBig(text = "Explore your New")
+            }
+            TextBig(text = "SKill Today")
+
+            Spacer(modifier = Modifier.height(20.dp))
+            TextSmall(text = "New Skills diversify your Job Options & helps you with to keep up with the Ever-changing world")
+            Spacer(modifier = Modifier.height(15.dp))
+        }
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(end = 30.dp, bottom = 30.dp),
+            contentAlignment = Alignment.BottomEnd
+        ) {
+            BottomIcon(
+                percentage = 0.166f,
+                onClick = {
+                    navController.navigate(Screens.ExpertiseAnimation.route)
+                }
             )
         }
-
-        Spacer(modifier = Modifier.height(80.dp))
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 300.dp)
-        ) {
-            TextBig(text = "Explore your New")
-        }
-        TextBig(text = "SKill Today")
-
-        Spacer(modifier = Modifier.height(20.dp))
-        TextSmall(text = "New Skills diversify your Job Options & helps you with to keep up with the Ever-changing world")
-        Spacer(modifier = Modifier.height(15.dp))
-
-
-        BottomIcon(percentage = 0.6f , navController=navController)
 
     }
 }
@@ -142,7 +148,8 @@ fun CircularProgressBar(
     color: Color = Color.LightGray,
     strokeWidth: Dp = 8.dp,
     animDuration: Int = 1000,
-    animDelay: Int = 0
+    animDelay: Int = 0,
+    onClick: () -> Unit = {}
 ) {
 
     var animationPlayed by remember {
@@ -178,7 +185,9 @@ fun CircularProgressBar(
             imageVector = icon,
             contentDescription = "Progress Icon",
             tint = Color.White,
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize().clickable {
+                onClick()
+            }
 
         )
     }
@@ -186,10 +195,9 @@ fun CircularProgressBar(
 
 
 @Composable
-fun BottomIcon(percentage: Float, navController: NavHostController) {
+fun BottomIcon(percentage: Float, onClick: () -> Unit = {}) {
     Box(
         modifier = Modifier
-            .clickable{ }
             .padding(
                 start = 270.dp,
                 end = 40.dp,
@@ -201,7 +209,8 @@ fun BottomIcon(percentage: Float, navController: NavHostController) {
         Column {
             CircularProgressBar(
                 percentage = percentage,
-                icon = Icons.Default.ArrowCircleRight
+                icon = Icons.Default.ArrowCircleRight,
+                onClick= onClick
             )
 
         }

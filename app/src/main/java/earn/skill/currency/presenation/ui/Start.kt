@@ -1,8 +1,10 @@
 package earn.skill.currency.presenation.ui
 
+import BottomIcon
 import TextSmall
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -32,85 +34,109 @@ import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
+import earn.skill.currency.navigation.Screens
 
 @Composable
 fun Start(navController: NavHostController) {
+    Box(modifier = Modifier.fillMaxSize()) {
+        Column(modifier = Modifier.fillMaxSize()) {
 
-    Column (modifier = Modifier.fillMaxSize()) {
-
-        Row(modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center) {
-            Text(text = "Skiller",
-                textAlign = TextAlign.Center,
-                fontSize = 22.sp,
-                fontFamily = FontFamily.Serif,
-                modifier = Modifier.padding(top = 50.dp))
-        }
-
-        Divider(
-            color = Color.White,
-            thickness = 1.dp,
-            modifier = Modifier.padding(top = 15.dp, start = 80.dp, end = 80.dp))
-
-        Row(modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center) {
-            Text(
-                text = "Push",
-                textAlign = TextAlign.Center,
-                fontSize = 30.sp,
-                fontFamily = FontFamily.Serif,
-                fontWeight = FontWeight.Medium,
-                modifier = Modifier.padding(top = 15.dp)
-            )
-        }
-
-        Row(modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center) {
-            Text(
-                text = "Yourself",
-                textAlign = TextAlign.Center,
-                fontSize = 50.sp,
-                fontWeight = FontWeight.SemiBold,
-                fontFamily = FontFamily.Serif,
-                modifier = Modifier.padding(bottom = 15.dp, top = 2.dp)
-
-            )
-        }
-
-
-        TextSmall(text = "Need help to improve ")
-        TextSmall(text = "your skills?")
-
-
-        Row(modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center) {
-            Button(
-                onClick = {
-                },
-                modifier = Modifier.padding(top = 30.dp).width(170.dp).height(50.dp),
-
-                ) {
-                Text(text = "Let's Start")
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    text = "Skiller",
+                    textAlign = TextAlign.Center,
+                    fontSize = 22.sp,
+                    fontFamily = FontFamily.Serif,
+                    modifier = Modifier.padding(top = 50.dp)
+                )
             }
+
+            Divider(
+                color = Color.White,
+                thickness = 1.dp,
+                modifier = Modifier.padding(top = 15.dp, start = 80.dp, end = 80.dp)
+            )
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    text = "Push",
+                    textAlign = TextAlign.Center,
+                    fontSize = 30.sp,
+                    fontFamily = FontFamily.Serif,
+                    fontWeight = FontWeight.Medium,
+                    modifier = Modifier.padding(top = 15.dp)
+                )
+            }
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    text = "Yourself",
+                    textAlign = TextAlign.Center,
+                    fontSize = 50.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    fontFamily = FontFamily.Serif,
+                    modifier = Modifier.padding(bottom = 15.dp, top = 2.dp)
+
+                )
+            }
+
+
+            TextSmall(text = "Need help to improve ")
+            TextSmall(text = "your skills?")
+
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Button(
+                    onClick = {
+                    },
+                    modifier = Modifier.padding(top = 30.dp).width(170.dp).height(50.dp),
+
+                    ) {
+                    Text(text = "Let's Start")
+                }
+            }
+            val compnotify by rememberLottieComposition(
+                spec = LottieCompositionSpec.Asset("study.json")
+            )
+            val progress by animateLottieCompositionAsState(compnotify)
+            LottieAnimation(
+                composition = compnotify,
+                iterations = Int.MAX_VALUE,
+                isPlaying = true,
+                contentScale = ContentScale.Crop,
+                speed = 1.45f,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .size(45.dp)
+                    .padding(top = 180.dp),
+            )
+
+
         }
-        val compnotify by rememberLottieComposition(
-            spec = LottieCompositionSpec.Asset("study.json")
-        )
-        val progress by animateLottieCompositionAsState(compnotify)
-        LottieAnimation(
-            composition = compnotify,
-            iterations = Int.MAX_VALUE,
-            isPlaying = true,
-            contentScale = ContentScale.Crop,
-            speed = 1.45f,
+        Box(
             modifier = Modifier
-                .fillMaxWidth()
-                .size(45.dp)
-                .padding(top = 180.dp),
-        )
-
-
-
-
+                .fillMaxSize()
+                .padding(end = 30.dp),
+            contentAlignment = Alignment.BottomEnd
+        ) {
+            BottomIcon(
+                percentage = 0.83f,
+                onClick = {
+                    navController.navigate(Screens.CardWallet.route)
+                }
+            )
+        }
     }
 }

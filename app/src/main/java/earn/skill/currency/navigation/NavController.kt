@@ -70,6 +70,10 @@ fun MainNavController() {
            ExpertiseAnimation(navHostController)
         }
 
+        composable(Screens.HomeScreen.route){
+            HomeScreen(navController = navHostController)
+        }
+
 
 
     }

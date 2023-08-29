@@ -19,6 +19,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
@@ -33,46 +34,60 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import earn.skill.currency.R
+import earn.skill.currency.navigation.Screens
 
 @Composable
 fun ChooseSkills(navController: NavHostController) {
 
-    Column(modifier = Modifier.fillMaxSize()) {
+    Box(modifier = Modifier.fillMaxSize()) {
 
-        Spacer(modifier = Modifier.height(30.dp))
-        TextBig(text = "Choose a way to")
-        TextBig(text = "study information")
-        Spacer(modifier = Modifier.height(15.dp))
-        TextSmall(text = "Choose ways that makes it easier for you to internalize information")
+        Column(modifier = Modifier.fillMaxSize()) {
+
+            Spacer(modifier = Modifier.height(30.dp))
+            TextBig(text = "Choose a way to")
+            TextBig(text = "study information")
+            Spacer(modifier = Modifier.height(15.dp))
+            TextSmall(text = "Choose ways that makes it easier for you to internalize information")
 
 
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(all = 20.dp)
-        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(all = 20.dp)
+            ) {
 
-            Column(modifier = Modifier) {
+                Column(modifier = Modifier) {
 
-                CardSmall(lottie = "audio.json", text = "AUDIO")
+                    CardSmall(lottie = "audio.json", text = "AUDIO")
 
-                Spacer(modifier = Modifier.height(15.dp))
-                CardBig(lottie = "video2.json", text = "VIDEO")
-            }
+                    Spacer(modifier = Modifier.height(15.dp))
+                    CardBig(lottie = "video2.json", text = "VIDEO")
+                }
 
-            Spacer(modifier = Modifier.width(15.dp))
+                Spacer(modifier = Modifier.width(15.dp))
 
-            Column(modifier = Modifier) {
-              CardBig(lottie = "mentor2.json", text = "MENTOR")
+                Column(modifier = Modifier) {
+                    CardBig(lottie = "mentor2.json", text = "MENTOR")
 
-                Spacer(modifier = Modifier.height(15.dp))
-                CardSmall(lottie = "articles.json", text = "ARTICLES")
+                    Spacer(modifier = Modifier.height(15.dp))
+                    CardSmall(lottie = "articles.json", text = "ARTICLES")
 
+                }
             }
         }
-
-      BottomIcon(percentage = 0.6f)
-
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(end = 30.dp),
+            contentAlignment = Alignment.BottomEnd
+        ) {
+            BottomIcon(
+                percentage = 0.66f,
+                onClick = {
+                    navController.navigate(Screens.Start.route)
+                }
+            )
+        }
     }
 }
 

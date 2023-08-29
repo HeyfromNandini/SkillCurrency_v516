@@ -1,10 +1,12 @@
 package earn.skill.currency
 
+import BottomIcon
 import HomeScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -41,6 +43,8 @@ import androidx.navigation.NavHostController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.umut.soysal.compose.creditcardview.component.CreditCardView
 import com.umut.soysal.compose.creditcardview.model.CreditCard
+import earn.skill.currency.navigation.MainNavController
+import earn.skill.currency.navigation.Screens
 import earn.skill.currency.presenation.ui.ChooseSkills
 import earn.skill.currency.presenation.ui.Start
 import earn.skill.currency.ui.theme.SkillCurrencyTheme
@@ -65,6 +69,7 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
                 ) {
+                    MainNavController()
 
 //                    Start()
 //                    ChooseSkills()
@@ -81,134 +86,136 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalUnitApi::class)
 @Composable
 fun CardWallet(navController: NavHostController) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 10.dp)
-    ) {
-        val creditCard = CreditCard(
-            creditCardNumber = "3437 **** **** *123",
-            cardBackgroundColor = MaterialTheme.colorScheme.surface.copy(0.95f).toArgb(),
-            textColor = MaterialTheme.colorScheme.surfaceTint.toArgb(),
-            isNfc = true,
-            expiration = "23/10",
-            holderName = "Kailash Sharma",
-            bankName = "HDFC BANK LTD.",
-            cardType = "VISA"
-        )
-        Card(
-            colors = CardDefaults.cardColors(
-                containerColor = Color.Transparent
-            ),
-            elevation = CardDefaults.cardElevation(10.dp),
-            modifier = Modifier.padding(10.dp)
-        ) {
-            CreditCardView(creditCard = creditCard)
-        }
-        Spacer(modifier = Modifier.height(20.dp))
-
-        Row(
+    Box(modifier = Modifier.fillMaxSize()) {
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 20.dp),
-            horizontalArrangement = Arrangement.SpaceAround
+                .padding(top = 10.dp)
         ) {
-            Button(
-                onClick = { /*TODO*/ },
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFFFFE92B)
-                )
+            val creditCard = CreditCard(
+                creditCardNumber = "3437 **** **** *123",
+                cardBackgroundColor = MaterialTheme.colorScheme.surface.copy(0.95f).toArgb(),
+                textColor = MaterialTheme.colorScheme.surfaceTint.toArgb(),
+                isNfc = true,
+                expiration = "23/10",
+                holderName = "Kailash Sharma",
+                bankName = "HDFC BANK LTD.",
+                cardType = "VISA"
+            )
+            Card(
+                colors = CardDefaults.cardColors(
+                    containerColor = Color.Transparent
+                ),
+                elevation = CardDefaults.cardElevation(10.dp),
+                modifier = Modifier.padding(10.dp)
             ) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Icon(
-                        imageVector = Icons.Filled.Send,
-                        contentDescription = null,
-                        modifier = Modifier.size(15.dp),
-                        tint = Color.Black
+                CreditCardView(creditCard = creditCard)
+            }
+            Spacer(modifier = Modifier.height(20.dp))
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 20.dp),
+                horizontalArrangement = Arrangement.SpaceAround
+            ) {
+                Button(
+                    onClick = { /*TODO*/ },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFFFFE92B)
                     )
-                    Spacer(modifier = Modifier.width(10.dp))
-                    Text(
-                        text = "Transfer",
-                        color = MaterialTheme.colorScheme.surface,
-                        fontWeight = FontWeight.Bold
-                    )
+                ) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icon(
+                            imageVector = Icons.Filled.Send,
+                            contentDescription = null,
+                            modifier = Modifier.size(15.dp),
+                            tint = Color.Black
+                        )
+                        Spacer(modifier = Modifier.width(10.dp))
+                        Text(
+                            text = "Transfer",
+                            color = MaterialTheme.colorScheme.surface,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
                 }
+
+                Button(
+                    onClick = { /*TODO*/ },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF8BC34A)
+                    )
+                ) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icon(
+                            imageVector = Icons.Filled.Payment,
+                            contentDescription = null,
+                            modifier = Modifier.size(15.dp),
+                            tint = Color.Black
+                        )
+                        Spacer(modifier = Modifier.width(10.dp))
+                        Text(
+                            text = "Request",
+                            color = MaterialTheme.colorScheme.surface,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                }
+
             }
 
-            Button(
-                onClick = { /*TODO*/ },
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFF8BC34A)
-                )
+            Spacer(modifier = Modifier.height(35.dp))
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 20.dp),
+                horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Icon(
-                        imageVector = Icons.Filled.Payment,
-                        contentDescription = null,
-                        modifier = Modifier.size(15.dp),
-                        tint = Color.Black
-                    )
-                    Spacer(modifier = Modifier.width(10.dp))
-                    Text(
-                        text = "Request",
-                        color = MaterialTheme.colorScheme.surface,
-                        fontWeight = FontWeight.Bold
-                    )
-                }
+                Text(
+                    text = "Recent Transactions",
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold
+                )
+
+                Icon(
+                    imageVector = Icons.Filled.MoreHoriz,
+                    contentDescription = null
+                )
             }
 
-        }
+            Spacer(modifier = Modifier.height(35.dp))
 
-        Spacer(modifier = Modifier.height(35.dp))
-
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 20.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Text(
-                text = "Recent Transactions",
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold
+            RepeatedCard(
+                image = R.drawable.vistara,
+                title = "Vistara Premium",
+                desc = "3 Dec 2020",
+                price = "-2000 Rs"
             )
 
-            Icon(
-                imageVector = Icons.Filled.MoreHoriz,
-                contentDescription = null
+            Spacer(modifier = Modifier.height(10.dp))
+
+            RepeatedCard(
+                image = R.drawable.airindia,
+                title = "Air India Business",
+                desc = "23 Jan 2021",
+                price = "+100 Rs",
+                isRed = false
             )
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            RepeatedCard(
+                image = R.drawable.indigo,
+                title = "Indigo Premium",
+                desc = "19 Mar 2021",
+                price = "-1500 Rs",
+                isRed = true
+            )
+
+
         }
-
-        Spacer(modifier = Modifier.height(35.dp))
-
-        RepeatedCard(
-            image = R.drawable.vistara,
-            title = "Vistara Premium",
-            desc = "3 Dec 2020",
-            price = "-2000 Rs"
-        )
-
-        Spacer(modifier = Modifier.height(10.dp))
-
-        RepeatedCard(
-            image = R.drawable.airindia,
-            title = "Air India Business",
-            desc = "23 Jan 2021",
-            price = "+100 Rs",
-            isRed = false
-        )
-
-        Spacer(modifier = Modifier.height(10.dp))
-
-        RepeatedCard(
-            image = R.drawable.indigo,
-            title = "Indigo Premium",
-            desc = "19 Mar 2021",
-            price = "-1500 Rs",
-            isRed = true
-        )
-
-
     }
 }
 

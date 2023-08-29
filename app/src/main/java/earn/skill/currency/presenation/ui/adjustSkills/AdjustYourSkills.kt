@@ -1,5 +1,6 @@
 package earn.skill.currency.presenation.ui.adjustSkills
 
+import BottomIcon
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -30,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import earn.skill.currency.navigation.Screens
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -152,6 +154,20 @@ fun ChooseYourSkills(navController: NavHostController) {
                     }
                 )
             }
+        }
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(end = 30.dp, bottom = 30.dp),
+            contentAlignment = Alignment.BottomEnd
+        ) {
+            BottomIcon(
+                percentage = 0.5f,
+                onClick = {
+                    navController.navigate(Screens.ChooseSkills.route)
+                }
+            )
         }
     }
 }
