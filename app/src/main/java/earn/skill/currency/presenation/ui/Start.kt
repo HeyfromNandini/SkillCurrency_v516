@@ -131,18 +131,5 @@ fun Start(navController: NavHostController) {
 
 
         }
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(top = 50.dp , end = 5.dp , bottom = 30.dp, start = 60.dp),
-            contentAlignment = Alignment.BottomEnd
-        ) {
-            BottomIcon(
-                percentage = 0.83f,
-                onClick = {
-                    navController.navigate(Screens.CardWallet.route)
-                }
-            )
-        }
     }
 }
