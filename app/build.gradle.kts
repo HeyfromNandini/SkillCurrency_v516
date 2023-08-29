@@ -65,6 +65,17 @@ dependencies {
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)
 
+
+//    navigation
+    implementation ("androidx.core:core-ktx:1.6.0")
+    implementation ("androidx.activity:activity-compose:1.3.1")
+    implementation ("androidx.lifecycle:lifecycle-runtime-compose:2.4.0")
+    implementation ("androidx.navigation:navigation-compose:2.4.0-alpha10")
+
+
+    //lottie
+    implementation ("com.airbnb.android:lottie-compose:5.2.0")
+
     // Sliders
     implementation("com.github.SmartToolFactory:Compose-Colorful-Sliders:1.2.0")
 
