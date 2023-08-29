@@ -37,9 +37,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.ExperimentalUnitApi
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.umut.soysal.compose.creditcardview.component.CreditCardView
 import com.umut.soysal.compose.creditcardview.model.CreditCard
+import earn.skill.currency.presenation.ui.ChooseSkills
 import earn.skill.currency.presenation.ui.Start
 import earn.skill.currency.ui.theme.SkillCurrencyTheme
 
@@ -63,9 +65,10 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
                 ) {
+
 //                    Start()
 //                    ChooseSkills()
-                    HomeScreen()
+//                    HomeScreen()
 //                    CardWallet()
 //                    ChooseYourSkills()
 //                    ExpertiseAnimation()
@@ -77,7 +80,7 @@ class MainActivity : ComponentActivity() {
 
 @OptIn(ExperimentalUnitApi::class)
 @Composable
-fun CardWallet() {
+fun CardWallet(navController: NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxWidth()

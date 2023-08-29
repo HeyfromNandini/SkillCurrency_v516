@@ -26,6 +26,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
@@ -33,7 +35,7 @@ import com.airbnb.lottie.compose.rememberLottieComposition
 import earn.skill.currency.R
 
 @Composable
-fun ChooseSkills() {
+fun ChooseSkills(navController: NavHostController) {
 
     Column(modifier = Modifier.fillMaxSize()) {
 
@@ -55,13 +57,13 @@ fun ChooseSkills() {
                 CardSmall(lottie = "audio.json", text = "AUDIO")
 
                 Spacer(modifier = Modifier.height(15.dp))
-                CardBig(lottie = "video.json", text = "VIDEO")
+                CardBig(lottie = "video2.json", text = "VIDEO")
             }
 
             Spacer(modifier = Modifier.width(15.dp))
 
             Column(modifier = Modifier) {
-              CardBig(lottie = "mentor.json", text = "MENTOR")
+              CardBig(lottie = "mentor2.json", text = "MENTOR")
 
                 Spacer(modifier = Modifier.height(15.dp))
                 CardSmall(lottie = "articles.json", text = "ARTICLES")
@@ -69,7 +71,7 @@ fun ChooseSkills() {
             }
         }
 
-      BottomIcon()
+      BottomIcon(percentage = 0.6f)
 
     }
 }
