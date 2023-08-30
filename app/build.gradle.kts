@@ -70,7 +70,7 @@ dependencies {
     implementation ("androidx.core:core-ktx:1.6.0")
     implementation ("androidx.activity:activity-compose:1.3.1")
     implementation ("androidx.lifecycle:lifecycle-runtime-compose:2.4.0")
-    implementation ("androidx.navigation:navigation-compose:2.4.0-alpha10")
+    implementation ("androidx.navigation:navigation-compose:2.7.0")
 
 
     //lottie

@@ -23,12 +23,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import earn.skill.currency.R
 import earn.skill.currency.presenation.ui.ComposableRiveAnimationView
 
 
 @Composable
-fun ExpertiseAnimation() {
+fun ExpertiseAnimation(navController: NavHostController) {
     var value by remember { mutableFloatStateOf(0f) }
     Column(
         modifier = Modifier.fillMaxSize()

@@ -3,6 +3,7 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -40,13 +41,15 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavHostController) {
 
     Column(modifier = Modifier.fillMaxSize()) {
 
@@ -85,7 +88,7 @@ fun HomeScreen() {
         Spacer(modifier = Modifier.height(15.dp))
 
 
-        BottomIcon(percentage = 0.6f)
+        BottomIcon(percentage = 0.6f , navController=navController)
 
     }
 }
@@ -176,15 +179,17 @@ fun CircularProgressBar(
             contentDescription = "Progress Icon",
             tint = Color.White,
             modifier = Modifier.fillMaxSize()
+
         )
     }
 }
 
 
 @Composable
-fun BottomIcon(percentage: Float) {
+fun BottomIcon(percentage: Float, navController: NavHostController) {
     Box(
         modifier = Modifier
+            .clickable{ }
             .padding(
                 start = 270.dp,
                 end = 40.dp,

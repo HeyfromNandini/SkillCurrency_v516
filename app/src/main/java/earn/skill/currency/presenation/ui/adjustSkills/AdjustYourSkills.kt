@@ -29,11 +29,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun ChooseYourSkills() {
+fun ChooseYourSkills(navController: NavHostController) {
     val skillList = listOf("Java", "Python", "C++", "Cloud", "DBA", "CyberSecurity")
     val pagerState = rememberPagerState(
         initialPage = 0, initialPageOffsetFraction = 0f
