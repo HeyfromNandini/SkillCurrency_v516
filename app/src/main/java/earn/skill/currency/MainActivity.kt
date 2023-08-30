@@ -1,5 +1,6 @@
 package earn.skill.currency
 
+import HomeScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -39,7 +40,7 @@ import androidx.compose.ui.unit.sp
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.umut.soysal.compose.creditcardview.component.CreditCardView
 import com.umut.soysal.compose.creditcardview.model.CreditCard
-import earn.skill.currency.presenation.ui.experience.ExpertiseAnimation
+import earn.skill.currency.presenation.ui.Start
 import earn.skill.currency.ui.theme.SkillCurrencyTheme
 
 class MainActivity : ComponentActivity() {
@@ -62,9 +63,12 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
                 ) {
+//                    Start()
+//                    ChooseSkills()
+                    HomeScreen()
 //                    CardWallet()
 //                    ChooseYourSkills()
-                    ExpertiseAnimation()
+//                    ExpertiseAnimation()
                 }
             }
         }
