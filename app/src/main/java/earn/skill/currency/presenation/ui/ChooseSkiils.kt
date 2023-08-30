@@ -55,13 +55,13 @@ fun ChooseSkills() {
                 CardSmall(lottie = "audio.json", text = "AUDIO")
 
                 Spacer(modifier = Modifier.height(15.dp))
-                CardBig(lottie = "video.json", text = "VIDEO")
+                CardBig(lottie = "video2.json", text = "VIDEO")
             }
 
             Spacer(modifier = Modifier.width(15.dp))
 
             Column(modifier = Modifier) {
-              CardBig(lottie = "mentor.json", text = "MENTOR")
+              CardBig(lottie = "mentor2.json", text = "MENTOR")
 
                 Spacer(modifier = Modifier.height(15.dp))
                 CardSmall(lottie = "articles.json", text = "ARTICLES")
@@ -69,7 +69,7 @@ fun ChooseSkills() {
             }
         }
 
-      BottomIcon()
+      BottomIcon(percentage = 0.6f)
 
     }
 }

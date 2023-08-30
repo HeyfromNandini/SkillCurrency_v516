@@ -1,9 +1,14 @@
+import android.health.connect.datatypes.units.Percentage
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -16,13 +21,23 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.PaintingStyle.Companion.Stroke
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.airbnb.lottie.compose.LottieAnimation
@@ -33,7 +48,7 @@ import com.airbnb.lottie.compose.rememberLottieComposition
 @Composable
 fun HomeScreen() {
 
-    Column (modifier = Modifier.fillMaxSize()){
+    Column(modifier = Modifier.fillMaxSize()) {
 
         Row {
 
@@ -69,14 +84,15 @@ fun HomeScreen() {
         TextSmall(text = "New Skills diversify your Job Options & helps you with to keep up with the Ever-changing world")
         Spacer(modifier = Modifier.height(15.dp))
 
-        BottomIcon()
+
+        BottomIcon(percentage = 0.6f)
 
     }
 }
 
 
 @Composable
-fun TextBig(text:String) {
+fun TextBig(text: String) {
 
     Row(
         modifier = Modifier.fillMaxWidth(),
@@ -116,34 +132,73 @@ fun TextSmall(text: String) {
 }
 
 @Composable
-fun BottomIcon() {
-    Box(modifier = Modifier
-        .padding(start = 270.dp,
-            end=10.dp,
-            top = 40.dp),
-        Alignment.BottomEnd) {
-        Card(
-            shape = CircleShape,
-            modifier = Modifier
-                .size(50.dp)
-        ) {
-            Column(modifier = Modifier
-                .fillMaxSize()
-                .background(color = Color.Black),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
+fun CircularProgressBar(
+    percentage: Float,
+    icon: ImageVector,
+    radius: Dp = 50.dp,
+    color: Color = Color.LightGray,
+    strokeWidth: Dp = 8.dp,
+    animDuration: Int = 1000,
+    animDelay: Int = 0
+) {
 
-                Icon(
-                    imageVector = Icons.Filled.ArrowCircleRight,
-                    contentDescription = "",
-                    tint = Color.White,
-                    modifier = Modifier
-                        .fillMaxSize()
+    var animationPlayed by remember {
+        mutableStateOf(false)
+    }
+    val curPercentage = animateFloatAsState(
+        targetValue = if (animationPlayed) percentage else 0f,
+        animationSpec = tween(
+            durationMillis = animDelay
+        )
+    )
+    LaunchedEffect(key1 = true) {
+        animationPlayed = true
+    }
 
-                )
+    Box(
+        modifier = Modifier
+            .size(radius * 2f)
+            .aspectRatio(1f),
+        contentAlignment = Alignment.Center
+    ) {
+        Canvas(modifier = Modifier.size(radius * 2f)) {
+            drawArc(
+                color = color,
+                -90f,
+                360 * curPercentage.value,
+                useCenter = false,
+                style = Stroke(strokeWidth.toPx(), cap = StrokeCap.Round)
+            )
+        }
 
-            }
+        Icon(
+            imageVector = icon,
+            contentDescription = "Progress Icon",
+            tint = Color.White,
+            modifier = Modifier.fillMaxSize()
+        )
+    }
+}
+
+
+@Composable
+fun BottomIcon(percentage: Float) {
+    Box(
+        modifier = Modifier
+            .padding(
+                start = 270.dp,
+                end = 40.dp,
+                top = 20.dp,
+                bottom = 40.dp
+            ),
+        Alignment.BottomEnd
+    ) {
+        Column {
+            CircularProgressBar(
+                percentage = percentage,
+                icon = Icons.Default.ArrowCircleRight
+            )
+
         }
     }
 }
