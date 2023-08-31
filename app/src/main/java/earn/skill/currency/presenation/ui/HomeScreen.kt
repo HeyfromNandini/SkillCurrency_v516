@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowCircleRight
 import androidx.compose.material3.Icon
@@ -25,6 +26,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
@@ -148,7 +150,7 @@ fun CircularProgressBar(
     icon: ImageVector,
     radius: Dp = 50.dp,
     color: Color = Color.LightGray,
-    strokeWidth: Dp = 8.dp,
+    strokeWidth: Dp = 3.dp,
     animDuration: Int = 1000,
     animDelay: Int = 0,
     onClick: () -> Unit = {}
@@ -187,9 +189,12 @@ fun CircularProgressBar(
             imageVector = icon,
             contentDescription = "Progress Icon",
             tint = Color.White,
-            modifier = Modifier.fillMaxSize().clickable {
-                onClick()
-            }
+            modifier = Modifier
+                .fillMaxSize()
+                .clip(CircleShape)
+                .clickable {
+                    onClick()
+                }
 
         )
     }
@@ -212,7 +217,7 @@ fun BottomIcon(percentage: Float, onClick: () -> Unit = {}) {
             CircularProgressBar(
                 percentage = percentage,
                 icon = Icons.Default.ArrowCircleRight,
-                onClick= onClick
+                onClick = onClick
             )
 
         }
