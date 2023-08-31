@@ -47,6 +47,7 @@ import earn.skill.currency.ui.theme.PurpleLight
 @Composable
 fun ChooseSkills(navController: NavHostController) {
 
+
     Box(modifier = Modifier.fillMaxSize()) {
 
         Column(modifier = Modifier.fillMaxSize()) {
@@ -86,7 +87,7 @@ fun ChooseSkills(navController: NavHostController) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(end = 30.dp),
+                .padding(top = 50.dp , end = 5.dp , bottom = 30.dp, start = 60.dp),
             contentAlignment = Alignment.BottomEnd
         ) {
             BottomIcon(

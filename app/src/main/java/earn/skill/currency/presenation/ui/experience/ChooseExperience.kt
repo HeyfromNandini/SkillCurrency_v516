@@ -142,11 +142,11 @@ fun ExpertiseAnimation(navController: NavHostController) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(end = 30.dp),
+                .padding(top = 50.dp , end = 5.dp , bottom = 30.dp, start = 60.dp),
             contentAlignment = Alignment.BottomEnd
         ) {
             BottomIcon(
-                percentage = 0.34f,
+                percentage = 0.33f,
                 onClick = {
                     navController.navigate(Screens.ChooseYourSkills.route)
                 }

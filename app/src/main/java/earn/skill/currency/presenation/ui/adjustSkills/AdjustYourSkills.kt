@@ -159,11 +159,11 @@ fun ChooseYourSkills(navController: NavHostController) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(end = 30.dp, bottom = 30.dp),
+                .padding(top = 50.dp , end = 5.dp , bottom = 30.dp, start = 60.dp),
             contentAlignment = Alignment.BottomEnd
         ) {
             BottomIcon(
-                percentage = 0.5f,
+                percentage = 0.49f,
                 onClick = {
                     navController.navigate(Screens.ChooseSkills.route)
                 }

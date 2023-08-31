@@ -1,5 +1,6 @@
 package earn.skill.currency.presenation.ui
 
+import BottomIcon
 import TextSmall
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -16,6 +17,7 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -128,6 +130,19 @@ fun Start(navController: NavHostController) {
             )
 
 
+        }
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(top = 50.dp , end = 5.dp , bottom = 30.dp, start = 60.dp),
+            contentAlignment = Alignment.BottomEnd
+        ) {
+            BottomIcon(
+                percentage = 0.83f,
+                onClick = {
+                    navController.navigate(Screens.CardWallet.route)
+                }
+            )
         }
     }
 }
