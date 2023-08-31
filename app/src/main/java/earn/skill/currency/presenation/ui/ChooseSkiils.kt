@@ -65,7 +65,7 @@ fun ChooseSkills(navController: NavHostController) {
                     .padding(all = 20.dp)
             ) {
 
-                Column(modifier = Modifier) {
+                Column(modifier = Modifier.fillMaxWidth(0.48f)) {
 
                     CardSmall(lottie = "audio.json", text = "AUDIO")
 
@@ -73,9 +73,9 @@ fun ChooseSkills(navController: NavHostController) {
                     CardBig(lottie = "video2.json", text = "VIDEO")
                 }
 
-                Spacer(modifier = Modifier.width(15.dp))
+                Spacer(modifier = Modifier.width(15.dp).align(Alignment.CenterVertically))
 
-                Column(modifier = Modifier) {
+                Column(modifier = Modifier.fillMaxWidth()) {
                     CardBig(lottie = "mentor2.json", text = "MENTOR")
 
                     Spacer(modifier = Modifier.height(15.dp))
@@ -106,8 +106,8 @@ fun CardBig(lottie: String,text: String ,contentScale: ContentScale = ContentSca
     Card(
         modifier = Modifier
             .clip(RoundedCornerShape(30.dp))
-            .height(200.dp)
-            .width(150.dp)
+            .height(230.dp)
+            .fillMaxWidth()
     ) {
 
         Box(modifier = Modifier.padding(start = 20.dp)){
@@ -139,8 +139,8 @@ fun CardSmall(lottie: String, text: String,contentScale: ContentScale = ContentS
     Card(
         modifier = Modifier
             .clip(RoundedCornerShape(30.dp))
-            .height(170.dp)
-            .width(150.dp),
+            .height(200.dp)
+            .fillMaxWidth()
 
 
     ) {
