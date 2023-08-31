@@ -16,12 +16,16 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -35,6 +39,10 @@ import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import earn.skill.currency.R
 import earn.skill.currency.navigation.Screens
+import earn.skill.currency.ui.theme.Purple40
+import earn.skill.currency.ui.theme.PurpleGrey40
+import earn.skill.currency.ui.theme.PurpleGrey80
+import earn.skill.currency.ui.theme.PurpleLight
 
 @Composable
 fun ChooseSkills(navController: NavHostController) {
@@ -44,10 +52,10 @@ fun ChooseSkills(navController: NavHostController) {
         Column(modifier = Modifier.fillMaxSize()) {
 
             Spacer(modifier = Modifier.height(30.dp))
-            TextBig(text = "Choose a way to")
-            TextBig(text = "study information")
+            TextBig(text = "Choose a way to", color = Color.White)
+            TextBig(text = "study information", color = Color.White)
             Spacer(modifier = Modifier.height(15.dp))
-            TextSmall(text = "Choose ways that makes it easier for you to internalize information")
+            TextSmall(text = "Choose ways that makes it easier for you to gain knowledge" , color= PurpleGrey80)
 
 
             Row(
@@ -131,7 +139,9 @@ fun CardSmall(lottie: String, text: String,contentScale: ContentScale = ContentS
         modifier = Modifier
             .clip(RoundedCornerShape(30.dp))
             .height(170.dp)
-            .width(150.dp)
+            .width(150.dp),
+
+
     ) {
 Box(modifier = Modifier.padding(start = 20.dp)){
     Text(text = text ,

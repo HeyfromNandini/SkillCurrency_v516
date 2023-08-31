@@ -99,7 +99,7 @@ fun CardWallet(navController: NavHostController) {
                 isNfc = true,
                 expiration = "23/10",
                 holderName = "Kailash Sharma",
-                bankName = "HDFC BANK LTD.",
+                bankName = "Workbucks (Skill Ninja)",
                 cardType = "VISA"
             )
             Card(

@@ -35,6 +35,9 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import earn.skill.currency.navigation.Screens
+import earn.skill.currency.ui.theme.BlueGreen
+import earn.skill.currency.ui.theme.Orange
+import earn.skill.currency.ui.theme.Purple40
 
 @Composable
 fun Start(navController: NavHostController) {
@@ -46,9 +49,10 @@ fun Start(navController: NavHostController) {
                 horizontalArrangement = Arrangement.Center
             ) {
                 Text(
-                    text = "Skiller",
+                    text = "Start Learning",
                     textAlign = TextAlign.Center,
                     fontSize = 22.sp,
+                    color= Orange,
                     fontFamily = FontFamily.Serif,
                     modifier = Modifier.padding(top = 50.dp)
                 )
@@ -83,6 +87,7 @@ fun Start(navController: NavHostController) {
                     textAlign = TextAlign.Center,
                     fontSize = 50.sp,
                     fontWeight = FontWeight.SemiBold,
+                    color = Purple40,
                     fontFamily = FontFamily.Serif,
                     modifier = Modifier.padding(bottom = 15.dp, top = 2.dp)
 
@@ -90,8 +95,8 @@ fun Start(navController: NavHostController) {
             }
 
 
-            TextSmall(text = "Need help to improve ")
-            TextSmall(text = "your skills?")
+            TextSmall(text = "Need help to improve ", color = Color.White)
+            TextSmall(text = "your skills?" , color = Color.White)
 
 
             Row(

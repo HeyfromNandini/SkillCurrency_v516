@@ -41,6 +41,7 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import earn.skill.currency.navigation.Screens
+import earn.skill.currency.ui.theme.BlueGreen
 
 @Composable
 fun HomeScreen(navController: NavHostController) {
@@ -64,22 +65,22 @@ fun HomeScreen(navController: NavHostController) {
                     modifier = Modifier
                         .fillMaxWidth()
                         .size(45.dp)
-                        .padding(top = 180.dp)
+                        .padding(top = 200.dp)
                 )
             }
 
-            Spacer(modifier = Modifier.height(80.dp))
+            Spacer(modifier = Modifier.height(100.dp))
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 300.dp)
             ) {
-                TextBig(text = "Explore your New")
+                TextBig(text = "Explore Skill Currency" , color = BlueGreen)
             }
-            TextBig(text = "SKill Today")
 
-            Spacer(modifier = Modifier.height(20.dp))
-            TextSmall(text = "New Skills diversify your Job Options & helps you with to keep up with the Ever-changing world")
+            Spacer(modifier = Modifier.height(40.dp))
+            TextSmall(text = "Upskilling to leverage job" , color = Color.White )
+            TextSmall(text = "opportunities globally" , color = Color.White )
             Spacer(modifier = Modifier.height(15.dp))
         }
         Box(
@@ -101,7 +102,7 @@ fun HomeScreen(navController: NavHostController) {
 
 
 @Composable
-fun TextBig(text: String) {
+fun TextBig(text: String, color: Color) {
 
     Row(
         modifier = Modifier.fillMaxWidth(),
@@ -117,12 +118,13 @@ fun TextBig(text: String) {
                     top = 2.dp,
                     end = 20.dp
                 )
+            , color = color
         )
     }
 }
 
 @Composable
-fun TextSmall(text: String) {
+fun TextSmall(text: String, color: Color) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.Center
@@ -130,10 +132,10 @@ fun TextSmall(text: String) {
         Text(
             text = text,
             fontSize = 18.sp,
-            color = Color.White,
+            color = color,
             modifier = Modifier
                 .padding(
-                    start = 20.dp,
+                    start = 25.dp,
                     end = 25.dp
                 )
         )
@@ -200,9 +202,9 @@ fun BottomIcon(percentage: Float, onClick: () -> Unit = {}) {
         modifier = Modifier
             .padding(
                 start = 270.dp,
-                end = 40.dp,
+                end = 20.dp,
                 top = 20.dp,
-                bottom = 40.dp
+                bottom = 20.dp
             ),
         Alignment.BottomEnd
     ) {
